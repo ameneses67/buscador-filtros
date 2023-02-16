@@ -1,0 +1,32 @@
+---
+import { Image } from "@astrojs/image/components";
+
+import Card from "./Card.astro";
+import type { findPathItemByKey } from "astro/dist/core/render/route-cache";
+
+import Auto from "../data/db";
+---
+
+<div class="container mx-auto px-4 py-8 sm:px-8 sm:py-16 bg-white">
+  <h2 class="text-3xl text-center font-bold py-8 uppercase break-words">
+    Resultados
+  </h2>
+  <div
+    class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-xs sm:max-w-full mx-auto"
+  >
+    {
+      Auto.map((item) => (
+        <div>
+          <Card
+            marca={item.marca}
+            modelo={item.modelo}
+            puertas={item.puertas}
+            transmision={item.transmision}
+            color={item.color}
+            precio={item.precio}
+          />
+        </div>
+      ))
+    }
+  </div>
+</div>

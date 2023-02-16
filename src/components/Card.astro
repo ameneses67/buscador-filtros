@@ -1,0 +1,33 @@
+---
+// import type { Props } from "astro";
+import { Image } from "@astrojs/image/components";
+// import type { autos } from "../data/db";
+import Auto from "../data/db";
+
+interface Props {
+  marca: string;
+  modelo: string;
+  year: number;
+  precio: number;
+  puertas: 2 | 4;
+  color: string;
+  transmision: "automatica" | "manual";
+  src: string;
+}
+
+const { marca, modelo, year, precio, puertas, color, transmision, src } =
+  Astro.props as Props;
+
+console.log(Astro.props);
+---
+
+<div class="border border-red-400 p-4">
+  <h3 class="text-xl font-bold text-center">{marca} - {modelo}</h3>
+  <p><span class="font-semibold mr-1">Año:</span>{year}</p>
+  <p><span class="font-semibold mr-1">Puertas:</span>{puertas}</p>
+  <p><span class="font-semibold mr-1">Transmisión:</span>{transmision}</p>
+  <p><span class="font-semibold mr-1">Color:</span>{color}</p>
+  <p class="text-lg mt-1">
+    <span class="font-semibold mr-1">Precio:</span>${precio}
+  </p>
+</div>

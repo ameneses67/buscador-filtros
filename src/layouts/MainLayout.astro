@@ -1,0 +1,17 @@
+---
+import Head from "./Head.astro";
+
+let { title } = Astro.props;
+
+title = "Buscador múltiples campos";
+---
+
+<!DOCTYPE html>
+<html lang="es">
+  <Head {title} />
+  <body class="bg-gradient-to-r from-sky-300 to-indigo-300 px-4 sm:px-8">
+    <main>
+      <slot />
+    </main>
+  </body>
+</html>
