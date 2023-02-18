@@ -1,0 +1,17 @@
+---
+import SelectLayout from "../layouts/SelectLayout.astro";
+import Autos from "../data/db";
+
+const years = Autos.map((auto) => auto.year);
+
+const yearsUnicos = years
+  .filter((year, index) => years.indexOf(year) === index)
+  .sort()
+  .reverse();
+
+const label: string = "año";
+---
+
+<SelectLayout {label}>
+  {yearsUnicos.map((year) => <option value={year}>{year}</option>)}
+</SelectLayout>

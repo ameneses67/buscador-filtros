@@ -8,6 +8,8 @@ import image from "@astrojs/image";
 
 // https://astro.build/config
 export default defineConfig({
+  site: "https://ameneses67.github.io",
+  base: "/buscador-filtros",
   integrations: [
     tailwind(),
     image({

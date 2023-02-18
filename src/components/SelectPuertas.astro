@@ -1,0 +1,17 @@
+---
+import SelectLayout from "../layouts/SelectLayout.astro";
+import Autos from "../data/db";
+
+const Puertas = Autos.map((auto) => auto.puertas);
+
+const PuertasUnicas = Puertas.filter(
+  (puertas, index) => Puertas.indexOf(puertas) === index
+).sort();
+
+const label: string = "puertas";
+---
+
+<!-- generar todos los options para el select de puertas -->
+<SelectLayout {label}>
+  {PuertasUnicas.map((puertas) => <option value={puertas}>{puertas}</option>)}
+</SelectLayout>

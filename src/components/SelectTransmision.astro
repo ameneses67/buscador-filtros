@@ -1,0 +1,20 @@
+---
+import SelectLayout from "../layouts/SelectLayout.astro";
+import Autos from "../data/db";
+
+const Transmision = Autos.map((auto) => auto.transmision);
+
+const TransmisionUnica = Transmision.filter(
+  (transmision, index) => Transmision.indexOf(transmision) === index
+).sort();
+
+const label: string = "transmisión";
+---
+
+<SelectLayout {label}>
+  {
+    TransmisionUnica.map((transmision) => (
+      <option value={transmision}>{transmision}</option>
+    ))
+  }
+</SelectLayout>

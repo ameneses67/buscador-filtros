@@ -1,0 +1,16 @@
+---
+import SelectLayout from "../layouts/SelectLayout.astro";
+import Autos from "../data/db";
+
+const marcas = Autos.map((auto) => auto.marca);
+
+const marcasUnicas = marcas
+  .filter((marca, index) => marcas.indexOf(marca) === index)
+  .sort();
+
+const label: string = "marca";
+---
+
+<SelectLayout {label}>
+  {marcasUnicas.map((marca) => <option value={marca}>{marca}</option>)}
+</SelectLayout>

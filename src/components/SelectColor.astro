@@ -1,0 +1,16 @@
+---
+import SelectLayout from "../layouts/SelectLayout.astro";
+import Autos from "../data/db";
+
+const colores = Autos.map((auto) => auto.color);
+
+const coloresUnicos = colores
+  .filter((color, index) => colores.indexOf(color) === index)
+  .sort();
+
+const label: string = "color";
+---
+
+<SelectLayout {label}>
+  {coloresUnicos.map((color) => <option value={color}>{color}</option>)}
+</SelectLayout>

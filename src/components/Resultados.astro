@@ -1,55 +1,58 @@
 ---
 import { Image } from "@astrojs/image/components";
 
-// import Card from "./Card.astro";
-// import type { findPathItemByKey } from "astro/dist/core/render/route-cache";
-
 import Autos from "../data/db";
 ---
 
-<div class="container mx-auto px-4 py-8 sm:px-8 sm:py-16 bg-white">
-  <h2 class="text-3xl text-center font-bold py-8 uppercase break-words">
+<section
+  class="container mx-auto px-4 py-8 sm:px-8 sm:py-16 bg-gradient-to-b from-white to-slate-100"
+>
+  <h2
+    class="text-2xl sm:text-3xl text-center font-bold pb-16 uppercase break-words"
+  >
     Resultados
   </h2>
   <div
-    class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-xs sm:max-w-full mx-auto"
+    class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 max-w-xs sm:max-w-full mx-auto"
   >
     {
-      Autos.map((item) => (
-        <div class="rounded-lg overflow-hidden shadow-sm hover:shadow-xl hover:scale-105 transition duration-300">
+      Autos.map((auto) => (
+        <div class="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-xl hover:scale-105 transition duration-300">
           <Image
-            src={item.src}
-            alt={item.marca}
+            src={auto.src}
+            alt={auto.marca}
             width={400}
-            aspectRatio={16 / 9}
+            height={225}
             class="w-full"
           />
           <h3 class="text-3xl font-bold text-center">
-            {item.marca} {item.modelo}
+            {auto.marca} {auto.modelo}
           </h3>
           <div class="p-4">
             <p>
               <span class="font-semibold mr-1">Año:</span>
-              {item.year}
+              {auto.year}
             </p>
             <p>
               <span class="font-semibold mr-1">Color:</span>
-              {item.color}
+              {auto.color}
             </p>
             <p>
               <span class="font-semibold mr-1">Puertas:</span>
-              {item.puertas}
+              {auto.puertas}
             </p>
             <p>
               <span class="font-semibold mr-1">Transmisión:</span>
-              {item.transmision}
+              {auto.transmision}
             </p>
             <p class="text-lg font-semibold mt-1">
-              <span>Precio:</span>${item.precio}
+              <span>Precio:</span>${auto.precio}
             </p>
           </div>
         </div>
       ))
     }
   </div>
-</div>
+</section>
+
+<script src="../scripts/busqueda"></script>

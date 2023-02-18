@@ -1,0 +1,11 @@
+---
+const { label } = Astro.props;
+---
+
+<div class="flex flex-col gap-1">
+  <label class="font-semibold capitalize" for="marca">{label}</label>
+  <select class="border-gray-300 bg-slate-50 rounded-sm" id={label}>
+    <option value="">Seleccione</option>
+    <slot />
+  </select>
+</div>

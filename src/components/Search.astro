@@ -1,29 +1,23 @@
 ---
+import SelectMarca from "./SelectMarca.astro";
+import SelectYear from "./SelectYear.astro";
+import SelectColor from "./SelectColor.astro";
+import SelectPuertas from "./SelectPuertas.astro";
+import SelectTransmision from "./SelectTransmision.astro";
 ---
 
-<div class="container mx-auto px-4 py-8 sm:px-8 sm:py-16 bg-white">
+<section class="container mx-auto px-4 py-8 sm:px-8 sm:py-16 bg-white">
+  <h2
+    class="text-2xl sm:text-3xl text-center font-bold pb-16 capitalize break-words max-w-md mx-auto"
+  >
+    Selecciona las características de tu auto
+  </h2>
   <form id="buscador">
     <div
       class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 sm:gap-8 max-w-xs sm:max-w-full mx-auto"
     >
-      <div class="flex flex-col gap-1">
-        <label class="font-semibold" for="marca">Marca</label>
-        <select class="border-gray-300 bg-slate-50 rounded-sm" id="marca">
-          <option value="">Seleccione</option>
-          <option value="Audi">Audi</option>
-          <option value="BMW">BMW</option>
-          <option value="Mercedes Benz">Mercedes Benz</option>
-          <option value="Chevrolet">Chevrolet</option>
-          <option value="Ford">Ford</option>
-          <option value="Dodge">Dodge</option>
-        </select>
-      </div>
-      <div class="flex flex-col gap-1">
-        <label class="font-semibold" for="year">Año</label>
-        <select class="border-gray-300 bg-slate-50 rounded-sm" id="year">
-          <option value="">Seleccione</option>
-        </select>
-      </div>
+      <SelectMarca />
+      <SelectYear />
       <div class="flex flex-col gap-1">
         <label class="font-semibold" for="minimo">Precio Min</label>
         <select class="border-gray-300 bg-slate-50 rounded-sm" id="minimo">
@@ -52,32 +46,9 @@
           <option value="90000">90,000</option>
         </select>
       </div>
-      <div class="flex flex-col gap-1">
-        <label class="font-semibold" for="puertas">Puertas</label>
-        <select class="border-gray-300 bg-slate-50 rounded-sm" id="puertas">
-          <option value="">Seleccione</option>
-          <option value="2">2</option>
-          <option value="4">4</option>
-        </select>
-      </div>
-      <div class="flex flex-col gap-1">
-        <label class="font-semibold" for="transmision">Transmisión</label>
-        <select class="border-gray-300 bg-slate-50 rounded-sm" id="transmision">
-          <option value="">Seleccione</option>
-          <option value="automatico">Automática</option>
-          <option value="manual">Manual</option>
-        </select>
-      </div>
-      <div class="flex flex-col gap-1">
-        <label class="font-semibold" for="color">Color</label>
-        <select class="border-gray-300 bg-slate-50 rounded-sm" id="color">
-          <option value="">Seleccione</option>
-          <option value="Negro">Negro</option>
-          <option value="Azul">Azul</option>
-          <option value="Blanco">Blanco</option>
-          <option value="Rojo">Rojo</option>
-        </select>
-      </div>
+      <SelectPuertas />
+      <SelectTransmision />
+      <SelectColor />
     </div>
   </form>
-</div>
+</section>
