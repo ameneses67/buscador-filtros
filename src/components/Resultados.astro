@@ -1,7 +1,8 @@
 ---
 import { Image } from "@astrojs/image/components";
 
-import Autos from "../data/db";
+// import Autos from "../data/db";
+import autos from "../data/autos.json";
 ---
 
 <section
@@ -16,13 +17,14 @@ import Autos from "../data/db";
     class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 max-w-xs sm:max-w-full mx-auto"
   >
     {
-      Autos.map((auto) => (
+      autos.map((auto) => (
         <div class="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-xl hover:scale-105 transition duration-300">
           <Image
             src={auto.src}
             alt={auto.marca}
             width={400}
             height={225}
+            format="avif"
             class="w-full"
           />
           <h3 class="text-3xl font-bold text-center">
@@ -55,4 +57,49 @@ import Autos from "../data/db";
   </div>
 </section>
 
-<script src="../scripts/busqueda"></script>
+<script>
+  import autos from "../data/autos.json";
+
+  const datosBusqueda = {
+    marca: "",
+    año: "",
+    minimo: "",
+    maximo: "",
+    puertas: "",
+    transmisión: "",
+    color: "",
+  };
+
+  // seleccionar todos los selects
+  const selectores = document.querySelectorAll("select");
+
+  // añadir eventos clic a cada select
+  selectores.forEach((selector) => {
+    selector.addEventListener("change", (e) => {
+      const seleccion = selector.id;
+      datosBusqueda[seleccion] = (e.target as HTMLInputElement).value;
+      console.log(datosBusqueda);
+      filtro();
+    });
+  });
+
+  const filtro = () => {
+    const resultado = autos.filter(filtrarMarca).filter(filtrarYear);
+    console.log(resultado);
+  };
+
+  function filtrarMarca(auto) {
+    if (datosBusqueda.marca) {
+      return auto.marca === datosBusqueda.marca;
+    }
+    return auto;
+  }
+
+  function filtrarYear(auto) {
+    const { año } = datosBusqueda;
+    if (año) {
+      return auto.year === parseInt(año); // el valor del select es string, por eso debemos convertirlo a number para poderlo comparar con el año número de la base de datos
+    }
+    return auto;
+  }
+</script>

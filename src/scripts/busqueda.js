@@ -1,4 +1,4 @@
-import autos from "../data/db";
+import autos from "../data/autos.json";
 
 // // objeto de búsqueda
 // type Busqueda = {
@@ -17,7 +17,7 @@ const datosBusqueda = {
   minimo: "",
   maximo: "",
   puertas: "",
-  transmision: "",
+  transmisión: "",
   color: "",
 };
 
@@ -27,9 +27,10 @@ const selectores = document.querySelectorAll("select");
 // añadir eventos clic a cada select
 selectores.forEach((selector) => {
   selector.addEventListener("change", (e) => {
-    const seleccion: string = selector.id;
-    datosBusqueda[seleccion] = (e.target as HTMLSelectElement).value;
-    filtrarAuto();
+    const seleccion = selector.id;
+    datosBusqueda[seleccion] = e.target.value;
+    filtrarResultados();
+    console.log(datosBusqueda);
   });
 });
 
@@ -54,5 +55,3 @@ function filtrarYear(auto) {
   }
   return auto;
 }
-
-export default { datosBusqueda };
